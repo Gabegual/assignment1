@@ -6,6 +6,7 @@ public class SavingsAccount {
 	private double balance = 0;
 	private double interestRate = 0.01;
 	private double FV = 0;
+	private int years = 0;
 
 	public void getBalance(double OpenBalance) {
 		balance = OpenBalance;
@@ -42,6 +43,7 @@ public class SavingsAccount {
 
 	public double futureValue(int years) {
 		double value = 0.00;
+		this.years = years;
 		double powered = Math.pow((1 + 0.0001), years);
 		value = balance * powered;
 		BigDecimal formatingFV = new BigDecimal(value).setScale(2, BigDecimal.ROUND_HALF_UP);
@@ -49,7 +51,7 @@ public class SavingsAccount {
 		return FV;
 	}
 
-	public String toString(int years) {
+	public String toString() {
 		double FV = futureValue(years);
 		return "Savings Account Balance: " + balance + "\n Savings Account Interest Rate: " + interestRate
 				+ "\n Savings Account Balance in " + years + " years: " + FV;

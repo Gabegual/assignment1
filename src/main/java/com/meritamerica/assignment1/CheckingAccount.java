@@ -18,6 +18,7 @@ public class CheckingAccount {
 	private double balance=0;
 	private double interestRate=0.0001;
 	private double FV =0;
+	private int years=0;
 
 
 	
@@ -56,6 +57,7 @@ public class CheckingAccount {
 
 	public double futureValue(int years) {
 		double value = 0.00;
+		this.years = years;
 		double powered = Math.pow((1 + 0.0001), years);
 		value = balance * powered;
 		BigDecimal formatingFV = new BigDecimal(value).setScale(2, BigDecimal.ROUND_HALF_UP);
@@ -63,7 +65,7 @@ public class CheckingAccount {
 		return FV;
 	}
 	
-	public String toString(int years) {
+	public String toString() {
 		double FV =futureValue(years);
 		return "Checking Account Balance: " +balance + "\n Checking Account Interest Rate: "+interestRate +
 				"\n Checking Account Balance in "+ years +" years: "+FV;
