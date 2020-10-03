@@ -62,10 +62,10 @@ public class CheckingAccount {
 	public double futureValue(int years) {
 		double value = 0.00;
 		this.years = years;
-		double powered = Math.pow((1 + 0.0001), years);
+		double powered = Math.pow((1 + interestRate), years);
 		value = balance * powered;
-		BigDecimal formatingFV = new BigDecimal(value).setScale(2, BigDecimal.ROUND_HALF_UP);
-		FV = formatingFV.doubleValue();
+		//BigDecimal formatingFV = new BigDecimal(value).setScale(2, BigDecimal.ROUND_HALF_UP);
+		FV = value;
 		return FV;
 	}
 	
