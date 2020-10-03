@@ -8,8 +8,13 @@ public class SavingsAccount {
 	private double FV = 0;
 	private int years = 0;
 
-	public void getBalance(double OpenBalance) {
-		balance = OpenBalance;
+	
+	public SavingsAccount(double StartingBalance) {
+		balance = StartingBalance;
+	}
+	
+	public double getBalance() {
+		return balance;
 
 	}
 

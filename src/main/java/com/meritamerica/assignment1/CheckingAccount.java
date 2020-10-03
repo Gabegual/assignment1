@@ -21,10 +21,14 @@ public class CheckingAccount {
 	private int years=0;
 
 
-	
-	public void getBalance(double OpenBalance) {
-		balance = OpenBalance;
+	public CheckingAccount(double checkingAccountOpeningBalance) {
+		balance = checkingAccountOpeningBalance;
+	}
 
+
+	
+	public double getBalance() {
+		return balance;
 	}
 
 	public double getInterestRate() {
