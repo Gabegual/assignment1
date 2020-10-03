@@ -1,6 +1,6 @@
 package com.meritamerica.assignment1;
 
-import java.math.*;
+import java.math.BigDecimal;
 /*CheckingAccount(double openingBalance)
 double getBalance()
 double getInterestRate()
@@ -15,21 +15,28 @@ Checking Account Balance in 3 years: $100.03
 */
 
 public class CheckingAccount {
-	private double balance;
+	private double balance=0;
+	private double interestRate=0.0001;
+	private double FV =0;
 
-	public double getBalance() {
-		return balance;
+
+	
+	public void getBalance(double OpenBalance) {
+		balance = OpenBalance;
+
 	}
 
 	public double getInterestRate() {
-		return 0.0001;
+		return interestRate;
 	}
 
 	public boolean withdraw(double amount) {
 		if (amount > 0 && amount <= balance) {
 			balance -= amount;
+			System.out.println("Your current balance is now $"+ balance);
 			return true;
 		} else {
+			System.out.println("You can not withdraw more than your current balance $"+ balance);
 			return false;
 		}
 
@@ -38,8 +45,10 @@ public class CheckingAccount {
 	public boolean deposit(double amount) {
 		if (amount > 0) {
 			balance += amount;
+			System.out.println("your current balance is now $"+ balance);
 			return true;
 		} else {
+			System.out.println("You can not deposit an amount less than zero");
 			return false;
 		}
 
@@ -49,7 +58,15 @@ public class CheckingAccount {
 		double value = 0.00;
 		double powered = Math.pow((1 + 0.0001), years);
 		value = balance * powered;
-		BigDecimal FV = new BigDecimal(value).setScale(2, BigDecimal.ROUND_HALF_UP);
-		return FV.doubleValue();
+		BigDecimal formatingFV = new BigDecimal(value).setScale(2, BigDecimal.ROUND_HALF_UP);
+		FV = formatingFV.doubleValue();
+		return FV;
+	}
+	
+	public String toString(int years) {
+		double FV =futureValue(years);
+		return "Checking Account Balance: " +balance + "\n Checking Account Interest Rate: "+interestRate +
+				"\n Checking Account Balance in "+ years +" years: "+FV;
+		
 	}
 }
