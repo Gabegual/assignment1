@@ -1,13 +1,17 @@
 package com.meritamerica.assignment1;
 
+import java.text.DecimalFormat;
+
 public class AccountHolder {
 	
+	private static final double CheckingAccountOpeiningBalance = 0;
 	private String firstName = "";
 	private String middleName = "";
 	private String lastName = "";
 	private String ssn = "";
-	private double checkingAccountOpeningBalance = (); 
-	private double savingsAccountOpeningBalance = ();
+	CheckingAccount checkingaccount = null;  
+	SavingsAccount savingAccount = null;
+	private CheckingAccount savingsAccount;
 	
 		
 
@@ -15,18 +19,13 @@ public class AccountHolder {
 		System.out.println("This is my AccountHolder Constructor");
 	}
 	public AccountHolder(String firstName, String middleName, String lastNmae, String ssN, double checkingAccountOpeningBalance, double savingsAccountOpeningBalance) {
-		AccountHolder firstName1 = new AccountHolder();
-		firstName1 = firstName1;
-		System.out.println(firstName1);
-		
-		AccountHolder middleName1 = new AccountHolder();
-		  middleName1 = middleName1;
-		System.out.println(middleName1);
-		
-		AccountHolder manji = new AccountHolder();
-		manji.lastName = "Manji";
-		System.out.println(Manji.lastName);
-		
+	
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+		this.ssn = ssn;
+		this.checkingaccount = new CheckingAccount(CheckingAccountOpeiningBalance);
+		this.savingAccount = new SavingsAccount(savingsAccountOpeningBalance);
 		
 		
 	}
@@ -54,20 +53,39 @@ public class AccountHolder {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-	public static void main(String [] args) {
+	
+	public void setssn(String ssn) {
+		this.ssn = ssn;
+	}
+	public String getssn() {
+		return ssn;
 		
-	AccountHolder sadiq = new AccountHolder();
-		sadiq.firstName = "Sadiq";
-		System.out.println(sadiq.firstName);
+	}
+	
+	public CheckingAccount getcheckingaccount() {
+		return checkingaccount;
+		
+	}
+	
+	public SavingsAccount getsavingsaccount() {
+		return savingAccount;
 		
 		
 	}
 	
-	//FirstName new firstName = Sadiq;
-	//MiddleName new middleName = "";
-	//LastName new lastName = Manji;
-
+	public String toString() {
+		DecimalFormat df = new DecimalFormat("0.##");
+		return "Name: "+firstName+" "+middleName+" "+lastName+"\n SSN: "+ ssn + 
+				"\n Checkings Account Balance: "+df.format(checkingaccount.getBalance())+
+				"\n Checking Account Intrest Rates: "+checkingaccount.getInterestRate()+
+				"\n Checking Account Balance In Three Years: "+df.format(checkingaccount.futureValue(3))+
+				"\n Savings Account Balance: "+df.format(savingAccount.getBalance())+
+				"\n Savings Account Intrest Rates: "+savingAccount.getInterestRate()+
+				"\n Savings Account Balance In Three Years: "+df.format(savingAccount.futureValue(3));
+				
+	}
 	
+	
+
 	
 }
