@@ -18,13 +18,13 @@ public class AccountHolder {
 	public AccountHolder () {
 		System.out.println("This is my AccountHolder Constructor");
 	}
-	public AccountHolder(String firstName, String middleName, String lastNmae, String ssN, double checkingAccountOpeningBalance, double savingsAccountOpeningBalance) {
+	public AccountHolder(String firstName, String middleName, String lastName, String ssN, double checkingAccountOpeningBalance, double savingsAccountOpeningBalance) {
 	
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
-		this.ssn = ssn;
-		this.checkingaccount = new CheckingAccount(CheckingAccountOpeiningBalance);
+		this.ssn = ssN;
+		this.checkingaccount = new CheckingAccount(checkingAccountOpeningBalance);
 		this.savingAccount = new SavingsAccount(savingsAccountOpeningBalance);
 		
 		
@@ -62,12 +62,12 @@ public class AccountHolder {
 		
 	}
 	
-	public CheckingAccount getcheckingaccount() {
+	public CheckingAccount getCheckingAccount() {
 		return checkingaccount;
 		
 	}
 	
-	public SavingsAccount getsavingsaccount() {
+	public SavingsAccount getSavingsAccount() {
 		return savingAccount;
 		
 		
