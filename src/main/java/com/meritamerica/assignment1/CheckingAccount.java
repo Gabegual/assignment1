@@ -13,6 +13,7 @@ Checking Account Balance: $100
 Checking Account Interest Rate: 0.0001
 Checking Account Balance in 3 years: $100.03
 */
+import java.text.DecimalFormat;
 
 public class CheckingAccount {
 	private double balance=0;
@@ -64,15 +65,15 @@ public class CheckingAccount {
 		this.years = years;
 		double powered = Math.pow((1 + interestRate), years);
 		value = balance * powered;
-		//BigDecimal formatingFV = new BigDecimal(value).setScale(2, BigDecimal.ROUND_HALF_UP);
 		FV = value;
 		return FV;
 	}
 	
 	public String toString() {
 		double FV =futureValue(years);
-		return "Checking Account Balance: " +balance + "\n Checking Account Interest Rate: "+interestRate +
-				"\n Checking Account Balance in "+ years +" years: "+FV;
+    	DecimalFormat df = new DecimalFormat("0.##");
+		return "Checking Account Balance: " + df.format(balance) + "\n Checking Account Interest Rate: "+interestRate +
+				"\n Checking Account Balance in "+ years +" years: "+df.format(FV);
 		
 	}
 }

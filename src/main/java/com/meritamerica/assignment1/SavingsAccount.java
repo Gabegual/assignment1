@@ -1,6 +1,7 @@
 package com.meritamerica.assignment1;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 public class SavingsAccount {
 	private double balance = 0;
@@ -51,16 +52,16 @@ public class SavingsAccount {
 		this.years = years;
 		double powered = Math.pow((1 + interestRate), years);
 		value = balance * powered;
-	//	BigDecimal formatingFV = new BigDecimal(value).setScale(2, BigDecimal.ROUND_HALF_UP);
 		FV = value;
 		return FV;
 	}
 
 	public String toString() {
 		double FV = futureValue(years);
-		return "Savings Account Balance: " + balance + 
+    	DecimalFormat df = new DecimalFormat("0.##");
+		return "Savings Account Balance: " + df.format(balance) + 
 				"\n Savings Account Interest Rate: " + interestRate
-				+ "\n Savings Account Balance in " + years + " years: " + FV;
+				+ "\n Savings Account Balance in " + years + " years: " + df.format(FV);
 
 	}
 }
